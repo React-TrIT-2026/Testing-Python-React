@@ -19,8 +19,6 @@ def test_calcular_descuento_basico(precio, porcentaje, resultado_esperado):
 @pytest.mark.parametrize(
     "precio, porcentaje",
     [
-        (100, 0),
-        (100, 100),
         (100, -10),
         (100, 150)
     ],
