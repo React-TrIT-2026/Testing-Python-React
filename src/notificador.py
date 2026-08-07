@@ -19,6 +19,7 @@ def enviar_notificacion(webhook_url, mensaje, canal="general"):
     Lanza ErrorDeNotificacion si el servicio responde con un código >= 400.
     Devuelve el JSON de la respuesta si todo va bien.
     """
+
     payload = {"text": mensaje, "channel": canal}
     respuesta = requests.post(webhook_url, json=payload, timeout=5)
 
