@@ -1,0 +1,1 @@
+SLACK_RESPONSE_OK = {"message": "ok"}
