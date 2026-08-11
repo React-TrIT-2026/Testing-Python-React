@@ -7,6 +7,14 @@ requires-python = ">=3.12"
 dependencies = [
     "pytest>=9.1.1",
     "requests>=2.34.2",
+    # Bloque 2.3 — testing de APIs
+    "fastapi>=0.115",
+    "httpx>=0.27",          # lo necesita TestClient de FastAPI
+    "sqlalchemy>=2.0",
+    # Bloque 2.4 — cobertura y property-based testing
+    "pytest-cov>=6.0",
+    "hypothesis>=6.100",
+    "pytest-xdist>=3.6",    # para el `pytest -n auto` de la chuleta
 ]
 
 [tool.pytest.ini_options]
