@@ -15,7 +15,7 @@ def calcular_descuento(precio, porcentaje):
 
 def descuento_por_franja(precio):
     """Descuento automático según el importe de la compra."""
-    if precio > 200:
+    if precio >= 200:
         return calcular_descuento(precio, 20)
     elif precio >= 100:
         return calcular_descuento(precio, 10)
