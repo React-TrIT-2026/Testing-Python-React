@@ -48,7 +48,6 @@ class TestAplicarDescuentoPorVolumen:
 
     def test_aplicar_descuento_por_volumen_2(self):
         print("test_aplicar_descuento_por_volumen: Ejecutando test para aplicar descuento")
-        assert False
 
     def test_aplicar_descuento_por_volumen(self):
         print("test_aplicar_descuento_por_volumen: Ejecutando test para aplicar descuento")

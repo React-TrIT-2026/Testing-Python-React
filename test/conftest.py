@@ -8,7 +8,7 @@ from fastapi.testclient import TestClient
 
 from src.app import app, Base, get_db
 
-@pytest.fixture()
+@pytest.fixture(scope="function")
 def db_session():
     engine = create_engine(
         "sqlite:///:memory:", # Memoria, no disco
@@ -26,7 +26,7 @@ def db_session():
         session.rollback() # Rollback al terminar el test, para que cada test empiece con la BD limpia
         session.close()
 
-@pytest.fixture()
+@pytest.fixture(scope="function")
 def client(db_session):
     def override_get_db():
         try:
