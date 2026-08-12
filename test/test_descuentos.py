@@ -2,13 +2,13 @@ import pytest
 
 from src.descuentos import calcular_descuento, descuento_por_franja, precio_final_con_envio
 
-def TestCalcularDescuento:
+class TestCalcularDescuento():
     pass
 
-def TestDescuentoPorFranja:
+class TestDescuentoPorFranja():
     pass
 
-def TestPrecioFinalConEnvio:
+class TestPrecioFinalConEnvio():
     pass
 
 
