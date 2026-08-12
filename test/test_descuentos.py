@@ -2,7 +2,17 @@ import pytest
 
 from src.descuentos import calcular_descuento, descuento_por_franja, precio_final_con_envio
 
+def TestCalcularDescuento:
+    pass
 
+def TestDescuentoPorFranja:
+    pass
+
+def TestPrecioFinalConEnvio:
+    pass
+
+
+# Arrage
 @pytest.mark.parametrize(
     "precio, porcentaje, resultado_esperado",
     [
@@ -12,8 +22,10 @@ from src.descuentos import calcular_descuento, descuento_por_franja, precio_fina
     ],
 )
 def test_calcular_descuento_basico(precio, porcentaje, resultado_esperado):
+    #Act
     resultado = calcular_descuento(precio, porcentaje)
 
+    #Assert
     assert resultado == resultado_esperado
 
 @pytest.mark.parametrize(
@@ -24,5 +36,8 @@ def test_calcular_descuento_basico(precio, porcentaje, resultado_esperado):
     ],
 )
 def test_calcular_descuento_porcentaje_invalido(precio, porcentaje):
+    # Act + Assert (van juntos: el "acto" es justo el que debe lanzar)
     with pytest.raises(ValueError):
         calcular_descuento(precio, porcentaje)
+
+
