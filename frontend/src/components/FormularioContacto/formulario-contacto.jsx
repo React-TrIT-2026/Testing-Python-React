@@ -38,7 +38,7 @@ export default function FormularioContacto({ onEnviar }) {
 
       {error && <p role="alert">{error}</p>}
 
-      <button type="submit">Enviar</button>
+      <button type="submit" name="Enviar">Enviar</button>
     </form>
   );
 }
