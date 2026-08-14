@@ -8,8 +8,11 @@ export function formatearPrecio(precio, moneda = "EUR") {
   if (typeof precio !== "number" || Number.isNaN(precio)) {
     throw new Error("El precio debe ser un número");
   }
+
   const simbolos = { EUR: "€", USD: "$", GBP: "£" };
+
   const simbolo = simbolos[moneda] || moneda;
+  
   return `${precio.toFixed(2)}${simbolo}`;
 }
 
