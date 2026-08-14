@@ -43,7 +43,11 @@ describe("formatearPrecio", () => {
     });
 });
 
-describe("esEmailValido", () => { });
+describe("esEmailValido", () => { 
+    it.todo("acepta un email con formato correcto");
+    it.todo("rechaza un email sin arroba");
+    it.todo("rechaza un valor que no es un string");
+});
 
 describe("calcularTotalCarrito", () => { });
 
