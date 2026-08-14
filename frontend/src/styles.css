@@ -1,0 +1,173 @@
+:root {
+  --fondo: #f6f7f9;
+  --tarjeta: #ffffff;
+  --texto: #16191d;
+  --suave: #6b7280;
+  --borde: #e3e6ea;
+  --acento: #2f6feb;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.5;
+}
+
+.app {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.75rem;
+}
+
+.subtitulo {
+  margin: 0.25rem 0 0;
+  color: var(--suave);
+}
+
+.tarjeta {
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.tarjeta h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.lista-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.lista-items li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--borde);
+}
+
+.precio {
+  color: var(--suave);
+  font-variant-numeric: tabular-nums;
+}
+
+.cantidad {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.vacio {
+  color: var(--suave);
+  margin: 0;
+}
+
+.totales {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.25rem 1rem;
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.totales dt {
+  color: var(--suave);
+}
+
+.totales dd {
+  margin: 0;
+  text-align: right;
+}
+
+.totales dt:last-of-type,
+.totales dd:last-of-type {
+  font-weight: 600;
+  color: var(--texto);
+}
+
+label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+input,
+textarea {
+  font: inherit;
+  padding: 0.5rem 0.625rem;
+  border: 1px solid var(--borde);
+  border-radius: 0.5rem;
+  background: var(--fondo);
+}
+
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--acento);
+  outline-offset: 1px;
+}
+
+textarea {
+  min-height: 5rem;
+  resize: vertical;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--borde);
+  border-radius: 0.5rem;
+  background: var(--tarjeta);
+}
+
+button.primario {
+  background: var(--acento);
+  border-color: var(--acento);
+  color: #fff;
+  font-weight: 500;
+  padding: 0.55rem 1rem;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+form {
+  display: grid;
+  gap: 0.5rem;
+}
+
+[role="alert"] {
+  margin: 0;
+  color: #b42318;
+  font-size: 0.9rem;
+}
+
+[role="status"] {
+  margin: 0;
+  color: #067647;
+  font-size: 0.9rem;
+}

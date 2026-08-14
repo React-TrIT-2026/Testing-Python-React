@@ -16,3 +16,6 @@ wheels/
 .coverage
 htmlcov/
 pedidos.db
+
+# Node / frontend
+node_modules/
