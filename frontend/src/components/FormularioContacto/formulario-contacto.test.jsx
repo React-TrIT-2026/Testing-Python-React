@@ -1,9 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import { FormularioContacto } from "./formulario-contacto";
+import { 
+    FormularioContacto, 
+    ERROR_CAMPOS_OBLIGATORIOS, 
+    ERROR_EMAIL_INVALIDO 
+} from "./formulario-contacto";
 
-describe("FormularioContactoComponent", () => {
+describe("FormularioContactoComponent", async () => {
     it("muestra los tres campos y el botón de enviar", () => {
         // Arrange
         const onEnviar = () => {}
@@ -20,7 +24,7 @@ describe("FormularioContactoComponent", () => {
         expect(screen.getByRole("button", { name: "Enviar"})).toBeInTheDocument();
     });
 
-    it("muestra un error si se envía el formulario vacío", () => {
+    it("muestra un error si se envía el formulario vacío", async () => {
         // Arrange
         const user = userEvent.setup()
         render(<FormularioContacto onEnviar={() => {}} />)
@@ -30,10 +34,49 @@ describe("FormularioContactoComponent", () => {
 
         // Assert
         expect(screen.getByRole("alert")
-            .toHaveTextContent("Todos los campos son obligatorios"))
+            .toHaveTextContent(ERROR_CAMPOS_OBLIGATORIOS))
     });
 
-    it.todo("llama a onEnviar con los datos rellenados");
+    it("llama a onEnviar con los datos rellenados", async () => {
+        // Arrange
+        const NOMBRE = "Manuel S. Lemos"
+        const EMAIL = "mlemos@ferrumox.com"
+        const MENSAJE = "Esto es un mensaje"
 
-    it.todo("muestra un error si el email no tiene arroba");
+        const onEnviarMock = jest.fn()
+
+        const user = userEvent.setup()
+        render(<FormularioContacto onEnviar={onEnviarMock} />);
+
+        // Act
+        await user.type(screen.getByLabelText("Nombre"), NOMBRE)
+        await user.type(screen.getByLabelText("Email"), EMAIL)
+        await user.type(screen.getByLabelText("Mensaje"), MENSAJE)
+
+        await user.click(screen.getByRole("button", { name: "Enviar"}))
+
+        // Assert
+        expect(onEnviarMock).toHaveBeenCalledWith({ NOMBRE, EMAIL, MENSAJE })
+    });
+
+    it("muestra un error si el email no tiene arroba", async () => {
+        // Arrange
+        const NOMBRE = "Manuel S. Lemos"
+        const EMAIL = "mlemos.ferrumox.com"
+        const MENSAJE = "Esto es un mensaje"
+
+        const user = userEvent.setup()
+        render(<FormularioContacto onEnviar={() => {}} />);
+
+        // Act
+        await user.type(screen.getByLabelText("Nombre"), NOMBRE)
+        await user.type(screen.getByLabelText("Email"), EMAIL)
+        await user.type(screen.getByLabelText("Mensaje"), MENSAJE)
+
+        await user.click(screen.getByRole("button", { name: "Enviar"}))
+
+        // Assert
+        expect(screen.getByRole("alert")
+            .toHaveTextContent(ERROR_EMAIL_INVALIDO))
+    });
 });

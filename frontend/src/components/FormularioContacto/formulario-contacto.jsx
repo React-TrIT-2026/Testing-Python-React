@@ -1,10 +1,8 @@
 import { useState } from "react";
 
-/**
- * Formulario de contacto controlado, para la práctica guiada de RTL.
- * Deliberadamente simple: nombre, email, mensaje, y validación básica
- * al enviar.
- */
+export const ERROR_CAMPOS_OBLIGATORIOS = "Todos los campos son obligatorios";
+export const ERROR_EMAIL_INVALIDO = "El email no es válido";
+
 export default function FormularioContacto({ onEnviar }) {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
@@ -14,11 +12,11 @@ export default function FormularioContacto({ onEnviar }) {
   function handleSubmit(e) {
     e.preventDefault();
     if (!nombre.trim() || !email.trim() || !mensaje.trim()) {
-      setError("Todos los campos son obligatorios");
+      setError(ERROR_CAMPOS_OBLIGATORIOS);
       return;
     }
     if (!email.includes("@")) {
-      setError("El email no es válido");
+      setError(ERROR_EMAIL_INVALIDO);
       return;
     }
     setError("");
