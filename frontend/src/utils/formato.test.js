@@ -64,6 +64,24 @@ describe("esEmailValido", () => {
     });
 });
 
-describe("calcularTotalCarrito", () => { });
+describe("calcularTotalCarrito", () => { 
+    // Setup
+    beforeAll(() => {});
+
+    beforeEach(() => {});
+
+    // Tests
+
+    it.todo("suma precio * cantidad de cada item");
+
+    it.skip("devuelve 0 si el carrito está vacío");
+
+    it.only("lanza un error si el carrito no es un array"); // pytest -k
+
+    // Teardown
+    afterEach(() => {});
+
+    afterAll(() => {});
+});
 
 describe("aplicarCuponDescuento", () => { });
