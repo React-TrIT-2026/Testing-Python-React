@@ -4,31 +4,16 @@ import {
 
 describe("formatearPrecio", () => { 
     // Happy Path: precio válido y moneda por defecto
-    it("formatea un precio en euros por defecto", () => {
-        // Arrange
-        const PRECIO = 19.9;
-        const MONEDA = "EUR";
-        const RESULTADO_ESPERADO = "19.90€";
-
+    it.each([
+        { precio: 19.9, moneda: "EUR", resultado: "19.90€" },
+        { precio: 19.9, moneda: "USD", resultado: "19.90$" },
+        { precio: 19.9, moneda: "GBP", resultado: "19.90£" }
+    ])("formatea un precio en %s", ({ precio, moneda, resultado }) => {
         // Act
-        const RESULTADO = formatearPrecio(PRECIO, MONEDA);
+        const RESULTADO = formatearPrecio(precio, moneda);
 
         // Assert
-        expect(RESULTADO).toBe(RESULTADO_ESPERADO);
-    });
-
-    // Cornel Case: precio válido y moneda indicada
-    it("formatea un precio en la moneda indicada", () => {
-        // Arrange
-        const PRECIO = 19.9;
-        const MONEDA = "USD";
-        const RESULTADO_ESPERADO = "19.90$";
-
-        // Act
-        const RESULTADO = formatearPrecio(PRECIO, MONEDA);
-
-        // Assert
-        expect(RESULTADO).toBe(RESULTADO_ESPERADO);
+        expect(RESULTADO).toBe(resultado);
     });
 
     // Error Path: precio no es un número
