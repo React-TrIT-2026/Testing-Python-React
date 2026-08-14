@@ -5,6 +5,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173,
-    open: true,
+    // Dentro de Docker no hay navegador que abrir
+    open: !process.env.DOCKER,
   },
 });

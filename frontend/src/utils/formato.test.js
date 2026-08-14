@@ -44,9 +44,39 @@ describe("formatearPrecio", () => {
 });
 
 describe("esEmailValido", () => { 
-    it.todo("acepta un email con formato correcto");
-    it.todo("rechaza un email sin arroba");
-    it.todo("rechaza un valor que no es un string");
+    it("acepta un email con formato correcto", () => {
+        // Arrange
+        const EMAIL = "test@trainingit.com";
+
+        // Act
+        const RESULTADO = esEmailValido(EMAIL);
+
+        // Assert
+        expect(RESULTADO).toBe(true);
+    
+    });
+
+    it("rechaza un email sin arroba", () => { 
+        // Arrange
+        const EMAIL = "test.trainingit.com";
+
+        // Act
+        const RESULTADO = esEmailValido(EMAIL);
+
+        // Assert
+        expect(RESULTADO).toBe(false);
+    });
+
+    it("rechaza un valor que no es un string", () => { 
+        // Arrange
+        const EMAIL = 123;
+
+        // Act
+        const RESULTADO = esEmailValido(EMAIL);
+
+        // Assert
+        expect(RESULTADO).toBe(false);
+    });
 });
 
 describe("calcularTotalCarrito", () => { });
