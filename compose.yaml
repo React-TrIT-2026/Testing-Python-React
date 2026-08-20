@@ -1,0 +1,39 @@
+name: studio-bookings
+
+services:
+  api:
+    build:
+      context: ./backend
+      dockerfile: Containerfile
+    container_name: studio-api
+    environment:
+      STUDIO_STORAGE: memory
+      STUDIO_CORS_ORIGINS: http://localhost:8080
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/api/health').status==200 else 1)
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+
+  web:
+    build:
+      context: ./frontend
+      dockerfile: Containerfile
+    container_name: studio-web
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "8080:80"
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1/"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
