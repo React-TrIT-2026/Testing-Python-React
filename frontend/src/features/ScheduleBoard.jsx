@@ -1,7 +1,9 @@
+import { useEffect } from "react";
 import { ClassCard } from "../components/ClassCard.jsx";
 import { DayGroup } from "../components/DayGroup.jsx";
 import { EmptyState } from "../components/EmptyState.jsx";
 import { bookingFor, groupByDay } from "../domain/schedule.js";
+
 
 export function ScheduleBoard({
   classes,

@@ -10,6 +10,7 @@ export function useStudioData(api, memberId) {
   const load = useCallback(async () => {
     try {
       const [classes, members] = await Promise.all([api.listClasses(), api.listMembers()]);
+      
       const [member, bookings] = memberId
         ? await Promise.all([api.getMember(memberId), api.listBookings(memberId)])
         : [null, []];
